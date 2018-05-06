@@ -2,12 +2,15 @@
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
 #include <WiFiManager.h>
+#include <Servo.h>
 
 //Definições de variáveis
 const int andasup = D0;
 const int garagem = D1;
 const int sala  = D2;
 const int jardim  = D3;
+const int portao  = D5;
+Servo sv1;
 
 
 // Porta de comunicacao (normalmente se utiliza a 80 ou 8080)
@@ -34,6 +37,11 @@ void setup() {
 
   pinMode(jardim, OUTPUT);
   digitalWrite(jardim, 0);
+
+  pinMode(portao, OUTPUT);
+  digitalWrite(portao, 0);
+
+   //sv1.attach(D5);
 
 
   // Mostra no monitor serial informacoes de conexao da rede
@@ -120,6 +128,31 @@ void loop() {
     digitalWrite(jardim, 0);
     Serial.println(req.indexOf("jardim_off"));
   }
+
+
+      if (req.indexOf("portao_on") != -1){
+        for (int fadeValue = 0 ; fadeValue <= 1023; fadeValue += 5)
+    // sets the value (range from 0 to 255):
+      analogWrite(portao, fadeValue);
+    // wait for 30 milliseconds to see the dimming effect
+    delay(30);
+
+      } else if (req.indexOf("portao_off") != -1){
+        for (int fadeValue = 1023 ; fadeValue >= 0; fadeValue -= 5) {
+  // sets the value (range from 0 to 255):
+    analogWrite(portao, fadeValue);
+  // wait for 30 milliseconds to see the dimming effect
+  delay(30);
+      }
+    }
+
+
+
+
+
+      //end controle servo1
+
+
 
 
 

@@ -7,7 +7,7 @@ var led_controle = function(status) {
 }
 
 // Acessa os botões e passando as nossas diretivas de ligar ou desligar o led
-var andarsuperior = function() {
+var Andarsuperior = function() {
   var andarsuperior_on = document.querySelector(".andarsuperior_on");
   andarsuperior_on.onclick = function() {
     led_controle("andarsuperior_on");
@@ -19,7 +19,7 @@ var andarsuperior = function() {
   }
 }
 
-var garagem = function() {
+var Garagem = function() {
   var garagemLigar = document.querySelector(".garagemLigar");
   garagemLigar.onclick = function() {
     led_controle("garagem_on");
@@ -31,7 +31,7 @@ var garagem = function() {
   }
 }
 
-var sala = function() {
+var Sala = function() {
   var sala_on = document.querySelector(".sala_on");
   sala_on.onclick = function() {
     led_controle("sala_on");
@@ -55,10 +55,25 @@ var Jardim = function() {
   }
 }
 
+var Portao = function() {
+  var portao_on = document.querySelector(".portao_on");
+  portao_on.onclick = function() {
+    led_controle("portao_on");
+  }
+
+  var portao_off = document.querySelector(".portao_off");
+  portao_off.onclick = function() {
+    led_controle("portao_off");
+  }
+}
+
+
+
 window.onload = function() {
   // Chama as funçôes
-  andarsuperior();
-  garagem();
-  sala();
+  Andarsuperior();
+  Garagem();
+  Sala();
   Jardim();
+  Portao();
 }
