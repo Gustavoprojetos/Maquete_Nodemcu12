@@ -53,19 +53,19 @@ var Jardim = function() {
   jardim_off.onclick = function() {
     led_controle("jardim_off");
   }
-}
-
-var Portao = function() {
-  var portao_on = document.querySelector(".portao_on");
-  portao_on.onclick = function() {
-    led_controle("portao_on");
   }
 
-  var portao_off = document.querySelector(".portao_off");
-  portao_off.onclick = function() {
-    led_controle("portao_off");
+  var Portao = function() {
+    var portao_on = document.querySelector(".portao_on");
+    portao_on.onclick = function() {
+      led_controle("portao_on");
+    }
+
+    var portao_off = document.querySelector(".portao_off");
+    portao_off.onclick = function() {
+      led_controle("portao_off");
+    }
   }
-}
 
 
 

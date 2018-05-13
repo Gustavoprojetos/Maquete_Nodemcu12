@@ -38,9 +38,12 @@ void setup() {
   pinMode(jardim, OUTPUT);
   digitalWrite(jardim, 0);
 
-  pinMode(portao, OUTPUT);
-  digitalWrite(portao, 0);
+  sv1.attach(portao);
+  sv1.write(20);
 
+/*  pinMode(portao, OUTPUT);
+  digitalWrite(portao, 0);
+*/
    //sv1.attach(D5);
 
 
@@ -131,20 +134,26 @@ void loop() {
 
 
       if (req.indexOf("portao_on") != -1){
-        for (int fadeValue = 0 ; fadeValue <= 1023; fadeValue += 5)
+        sv1.write(90);
+        /*
+        for (int fadeValue = 0 ; fadeValue <= 90; fadeValue += 5)
     // sets the value (range from 0 to 255):
       analogWrite(portao, fadeValue);
     // wait for 30 milliseconds to see the dimming effect
+    */
     delay(30);
 
       } else if (req.indexOf("portao_off") != -1){
-        for (int fadeValue = 1023 ; fadeValue >= 0; fadeValue -= 5) {
+        sv1.write(20);
+
+        /*
+        for (int fadeValue = 90 ; fadeValue >= 0; fadeValue -= 5) {
   // sets the value (range from 0 to 255):
     analogWrite(portao, fadeValue);
   // wait for 30 milliseconds to see the dimming effect
+  */
   delay(30);
       }
-    }
 
 
 
